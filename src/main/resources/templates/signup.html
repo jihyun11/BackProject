@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link type="image/png" sizes="16x16" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-16.png"/>
+    <link type="image/png" sizes="32x32" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-32.png"/>
+    <a target="_blank" href="https://icons8.com/icon/101282/리그-오브-레전드">리그 오브 레전드</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <title>T1 Gumayusi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" th:href="@{/css/signup.css}" href="../static/css/signup.css"/>
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="index.html" th:href="@{/}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <a href="index.html#profile" th:href="@{/#profile}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROFILE</a>
+      <a href="index.html#league" th:href="@{/#league}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LEAGUE</a>
+      <a href="index.html#letter" th:href="@{/#letter}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LETTER</a>
+      <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="#" class="w3-bar-item w3-button" th:href="@{/signin}" >Sign in</a>
+              <a href="#" class="w3-bar-item w3-button" th:href="@{/signup}">Sign up</a>
+      </div>
+    </div>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <button href="#profile" class="w3-bar-item w3-button w3-padding-large" onclick="location.href='hello2.html#profile'">PRIFILE</a>
+  <a href="#league" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LEAGUE</a>
+  <a href="#letter" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LETTER</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+<body>
+    <div id="con">
+    <div id="login">
+    <div id="login_form"><!--로그인 폼-->
+    <form>
+        <h3 class="login" style="letter-spacing:-1px;">Sign up</h3>
+
+        <!-- <p>
+            <input type="submit" value="Sign in with Google" class="btn" style="background-color:#217Af0">
+        </p> 구글로 로그인-->
+
+        <hr>
+
+        <!-- <span>ID</span> -->
+        <p style="text-align: left; font-size:12px; color:#666">username</p>
+        <input type="text" placeholder="아이디" class="size">
+        <p></p>
+        </label><!--아이디-->
+
+        <label>
+        <!-- <span>PW</span> -->
+        <p style="text-align: left; font-size:12px; color:#666">Password </p>
+        <input type="password" placeholder="비밀번호" class="size">
+        </label><!--비밀번호-->
+
+        <label>
+            <!-- <span>PW</span> -->
+            <p style="text-align: left; font-size:12px; color:#666"> </p>
+            <input type="password" placeholder="비밀번호 확인" class="size">
+        </label><!--비밀번호 확인-->
+
+        <label>
+            <!-- <span>PW</span> -->
+        <p style="text-align: left; font-size:12px; color:#666">Mobile Phone</p>
+            <select class="size num1">
+                <option value="1" selected>SKT</option>
+                <option value="2" selected>KT</option>
+                <option value="3" selected>LG</option>
+            </select>
+            <input placeholder="-빼고 숫자만 입력"  class="size num2" required>
+         </label> <!--전화번호-->
+
+
+         <label>
+                <!-- <span>PW</span> -->
+            <p style="text-align: left; font-size:12px; color:#666">E-mail</p>
+                <input type="text" placeholder="이메일" class="size">
+        </label> <!--이메일-->
+
+
+    <br>
+        <p>
+            <input type="submit" value="Create Acoout" class="btn">
+
+        </p>
+    </form>
+
+    <hr>
+    <p class="find">
+        <span><a th:href="@{/signin}" href="signin1.html" >로그인 페이지로 이동</a></span>
+    </p>
+    </div>
+    <div>
+    </div><!--con-->
+
+</body>

@@ -1,10 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link type="image/png" sizes="16x16" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-16.png"/>
+    <link type="image/png" sizes="32x32" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-32.png"/>
+    <a target="_blank" href="https://icons8.com/icon/101282/리그-오브-레전드">리그 오브 레전드</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <title>T1 Gumayusi</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
 </head>
 <body>
-hi
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROFILE</a>
+    <a href="#league" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LEAGUE</a>
+    <a href="#letter" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LETTER</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button" th:href="@{/signin}" >Sign in</a>
+        <a href="#" class="w3-bar-item w3-button" th:href="@{/signup}">Sign up</a>
+      </div>
+    </div>
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <button href="#profile" class="w3-bar-item w3-button w3-padding-large" onclick="location.href='hello2.html#profile'">PRIFILE</a>
+  <a href="#league" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LEAGUE</a>
+  <a href="#letter" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LETTER</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- sideshow 움직이는 이미지 -->
+  <div class="mySlides w3-display-container w3-center">
+    <img th:src="@{/img/KakaoTalk_Photo_2022-09-10-16-38-41.jpeg}" src="../static/img/KakaoTalk_Photo_2022-09-10-16-38-41.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>T1 Gumayusi</h3>
+      <p><b>최고의 선수가 있을 곳은, T1이니까.</b></p>
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img th:src="@{/img/KakaoTalk_Photo_2022-09-10-16-39-11.jpeg}" src="../static/img/KakaoTalk_Photo_2022-09-10-16-39-11.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>T1 Gumayusi</h3>
+      <p><b>킬 주면 좋아!</b></p>
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img th:src="@{/img/KakaoTalk_Photo_2022-09-10-16-54-01.jpeg}" src="../static/img/KakaoTalk_Photo_2022-09-10-16-54-01.jpeg" style="width:100%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+      <h3>T1 Gumayusi</h3>
+      <p><b>분석 완료!</b></p>
+    </div>
+  </div>
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="profile">
+    <h2 class="w3-wide">Gumayusi    </h2> <h4 class="w3-wide" float = "right">이민형</h4>
+    <p class="w3-opacity"><i>세상에 천재는 많지만, 정점은 하나다.</i></p>
+    <p class="w3-justify">대한민국의 리그 오브 레전드 프로게이머. LCK의 T1 소속 바텀 라이너.
+
+      초창기 솔로랭크 당시에는 강력한 파괴력과 피지컬, 메카닉으로 화제가 되었으며 이후 T1 1군으로 콜업되어 정식 주전으로 자리잡게 되었다. 그리고 첫 단독주전을 잡은 2022시즌의 LCK 스프링을 우승함으로써 한체원이 되어 스스로의 가능성을 증명함과 동시에 LCK 최초의 전승 우승을 달성한 원딜러가 됐다. 그리고 또한 단일시즌 219킬로 최고킬수 기록을 경신하는 등 압도적인 폼을 선보였다. 리그에서 손 꼽히는 하이퍼캐리형 원딜러로 실제 경기에서도 솔랭에서 보여주는 장점이 고스란히 드러나는 편이다.
+
+      피지컬로 화제가 되었던 선수인만큼 이런 면에서는 당연 최상급으로 평가받는 중. 세계에서 몇없는 S급 서포터인 케리아가 보좌하고 있다는 점을 고려하더라도 초반 단계부터 매우 강한 압박을 가하며 적극적으로 딜교를 시도한다. 또한 한타에서도 아펠리오스, 사미라와 같은 한타에서 그 영향력을 발휘할 수 있는 챔피언을 쥐어주면 과감한 포지션 선정으로 킬을 쓸어 담으며 해설진이 "킬 결정력이 높다"며 '스트라이커'라는 별명을 지어주기도 하였다.</p>
+
+  </div>
+
+  <div class="w3-row  w3-center" style="padding-bottom: 95px;">
+    <iframe style="margin-right: 10px;" width="450" height="315" src="https://www.youtube.com/embed/NJzI2SOUHE8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="margin-left: 10px;" width="450" height="315" src="https://www.youtube.com/embed/NGr2IYt3_dI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <!-- The Tour Section -->
+  <div class="w3-black" id="league">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">LEAGUE DATES</h2>
+      <p class="w3-opacity w3-center"><i>잊지 말고 체크하세요!</i></p><br>
+
+      <ul class="w3-ul w3-border w3-white w3-text-grey">
+        <li class="w3-padding">9월 <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
+        <li class="w3-padding">10월 <span class="w3-badge w3-right w3-margin-right">3</span></li>
+        <li class="w3-padding">11월 <span class="w3-badge w3-right w3-margin-right">3</span></li>
+      </ul>
+
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <!-- <img src="/w3images/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity"> -->
+          <div class="w3-container w3-white">
+            <p><b>LOL Park</b></p>
+            <p class="w3-opacity">2022. 8. 21. SUN</p>
+            <p>LCK Summer 플레이오프 2R</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <!-- <img src="/w3images/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity"> -->
+          <div class="w3-container w3-white">
+            <p><b>강릉 아레나</b></p>
+            <p class="w3-opacity">2022. 8.28. SUN</p>
+            <p>LCK Summer 결승</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+          </div>
+        </div>
+        <div class="w3-third w3-margin-bottom">
+          <!-- <img src="/w3images/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity"> -->
+          <div class="w3-container w3-white">
+            <p><b>San Francisco</b></p>
+            <p class="w3-opacity">2022. 11. 5. SAT</p>
+            <p>LOL Worlds 2022</p>
+            <button class="w3-button w3-black w3-margin-bottom"  onClick="location.href='http://tickets.interpark.com/goods/22009483#'" target="_blank">Buy Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal w3-center w3-padding-32">
+        <span onclick="document.getElementById('ticketModal').style.display='none'"
+       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+      </header>
+      <div class="w3-container">
+        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="How many?">
+        <p><label><i class="fa fa-user"></i> Send To</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="Enter email">
+        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="letter">
+    <h2 class="w3-wide w3-center">LETTER</h2>
+    <p class="w3-opacity w3-center"><i>응원의 한마디!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Incheon, KR<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +82 151515<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: 372491@naver.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">전송</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- End Page Content -->
+</div>
+
+<!-- Image of location/map -->
+<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <!-- <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i> -->
+  <!-- <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 4000);
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
+
