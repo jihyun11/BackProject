@@ -7,6 +7,16 @@ public class MemberDto {
     String phone;
     String email;
 
+    public MemberDto(String username, String password, String phone, String email) {
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public MemberDto() {
+    }
+
     @Override
     public String toString() {
         return "MemberDto{" +

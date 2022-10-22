@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class SignController {
 
@@ -30,4 +35,25 @@ public class SignController {
         SignService.signup(md);
         return "redirect:/signin";
     }
+
+    @PostMapping("/signin")
+    public String signinPost(@ModelAttribute MemberDto md, HttpServletRequest req) {
+        System.out.println(md.getUsername() + md.getPassword());
+        MemberDto memberDto = SignService.signin(md);
+        System.out.println(memberDto);
+        HttpSession session = req.getSession();
+        if (memberDto != null) {
+            session.setAttribute("member", memberDto);
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.invalidate();
+        return "redirect:/";
+    }
 }
+
+
