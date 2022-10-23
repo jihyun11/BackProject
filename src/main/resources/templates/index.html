@@ -33,7 +33,7 @@ body {font-family: "Lato", sans-serif}
         <a href="#" class="w3-bar-item w3-button" th:href="@{/signup}">Sign up</a>
       </div>
       <div th:if="${session.member!= null}" class="w3-dropdown-content w3-bar-block w3-card-4">
-
+        <a href="#" class="w3-bar-item w3-button" th:href="@{/myinfo}">내 정보</a>
         <a href="#" class="w3-bar-item w3-button" th:href="@{/logout}">Logout</a>
       </div>
     </div>
@@ -108,18 +108,18 @@ body {font-family: "Lato", sans-serif}
         <div class="w3-third w3-margin-bottom">
           <!-- <img src="/w3images/newyork.jpg" alt="New York" style="width:100%" class="w3-hover-opacity"> -->
           <div class="w3-container w3-white">
-            <p><b>LOL Park</b></p>
-            <p class="w3-opacity">2022. 8. 21. SUN</p>
-            <p>LCK Summer 플레이오프 2R</p>
+            <p><b>New York</b></p>
+            <p class="w3-opacity">2022. 10. 22. SAT</p>
+            <p>LoL Worlds 8강</p>
             <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
           <!-- <img src="/w3images/paris.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity"> -->
           <div class="w3-container w3-white">
-            <p><b>강릉 아레나</b></p>
-            <p class="w3-opacity">2022. 8.28. SUN</p>
-            <p>LCK Summer 결승</p>
+            <p><b>Atlanta</b></p>
+            <p class="w3-opacity">2022. 10. 30.  SUN</p>
+            <p>LOL Worlds 4강</p>
             <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
           </div>
         </div>
@@ -127,8 +127,8 @@ body {font-family: "Lato", sans-serif}
           <!-- <img src="/w3images/sanfran.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity"> -->
           <div class="w3-container w3-white">
             <p><b>San Francisco</b></p>
-            <p class="w3-opacity">2022. 11. 5. SAT</p>
-            <p>LOL Worlds 2022</p>
+            <p class="w3-opacity">2022. 11. 6. SAT</p>
+            <p>LOL Worlds 결승</p>
             <button class="w3-button w3-black w3-margin-bottom"  onClick="location.href='http://tickets.interpark.com/goods/22009483#'" target="_blank">Buy Tickets</button>
           </div>
         </div>
