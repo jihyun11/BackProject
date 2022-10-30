@@ -11,4 +11,11 @@ public class IndexController {
         ModelAndView mav = new ModelAndView("index");
         return mav;
     }
+    @GetMapping("/myinfo")
+    public ModelAndView myinfo() {
+        ModelAndView mav = new ModelAndView("myinfo");
+        return mav;
+    }
+
+
 }
