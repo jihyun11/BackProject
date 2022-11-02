@@ -68,7 +68,7 @@
 
                     <!-- <span>ID</span> -->
                     <p style="text-align: left; font-size:12px; color:#666">username</p>
-                    <input type="text" name="username" placeholder="아이디" class="size">
+                    <input  th:text="${myinfo1}" name="username"  class="size">
                     <p></p>
                     </label><!--아이디-->
 
@@ -79,13 +79,6 @@
                     </label><!--비밀번호-->
 
                     <label>
-                        <!-- <span>PW</span> -->
-                        <p style="text-align: left; font-size:12px; color:#666"> </p>
-                        <input type="password" placeholder="비밀번호 확인" class="size">
-                    </label><!--비밀번호 확인-->
-
-                    <label>
-                        <!-- <span>PW</span> -->
                         <p style="text-align: left; font-size:12px; color:#666">Mobile Phone</p>
                         <input placeholder="-빼고 숫자만 입력" name="phone" class="size" required>
                     </label> <!--전화번호-->
