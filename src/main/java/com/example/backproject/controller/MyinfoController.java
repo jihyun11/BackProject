@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,14 +24,10 @@ public class MyinfoController {
         return mav;
     }
 
-    @GetMapping("/myinfo/username")
-    public String myinfoUsername(@ModelAttribute MemberDto md, HttpServletRequest req) {
-
-        System.out.println(md.getUsername() + md.getPassword());
-        String memberDto = md.getUsername();
-        System.out.println(memberDto);
-        HttpSession session = req.getSession();
-        return md.getUsername();
+    @GetMapping("/username")
+    @ResponseBody
+    public String myinfoUsername(Principal principal) {
+        return principal.getName();
     }
 
 
