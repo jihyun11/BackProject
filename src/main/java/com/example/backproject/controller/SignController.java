@@ -2,6 +2,7 @@ package com.example.backproject.controller;
 
 import com.example.backproject.dto.MemberDto;
 import com.example.backproject.service.SignService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class SignController {
+
+    @Autowired
+    private SignService signService;
 
     @GetMapping("/signin")
     public ModelAndView signin() {
@@ -32,14 +36,14 @@ public class SignController {
     @PostMapping("/signup")
     public String signupPost(@ModelAttribute MemberDto md) {
         System.out.println(md.toString());
-        SignService.signup(md);
+        signService.signup(md);
         return "redirect:/signin";
     }
 
     @PostMapping("/signin")
     public String signinPost(@ModelAttribute MemberDto md, HttpServletRequest req) {
         System.out.println(md.getUsername() + md.getPassword());
-        MemberDto memberDto = SignService.signin(md);
+        MemberDto memberDto = signService.signin(md);
         System.out.println(memberDto);
         HttpSession session = req.getSession();
         if (memberDto != null) {
