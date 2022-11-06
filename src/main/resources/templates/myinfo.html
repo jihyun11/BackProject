@@ -68,26 +68,26 @@
 
                     <!-- <span>ID</span> -->
                     <p style="text-align: left; font-size:12px; color:#666">username</p>
-                    <input  th:href="@{/username}" name="username"  class="size">
+                    <input  th:value="${member.username}" name="username"  class="size" disabled>
                     <p></p>
                     </label><!--아이디-->
 
                     <label>
                         <!-- <span>PW</span> -->
                         <p style="text-align: left; font-size:12px; color:#666">Password </p>
-                        <input type="password" name="password" placeholder="비밀번호" class="size">
+                        <input type="password" th:value="${member.password}" name="password" placeholder="비밀번호" class="size">
                     </label><!--비밀번호-->
 
                     <label>
                         <p style="text-align: left; font-size:12px; color:#666">Mobile Phone</p>
-                        <input placeholder="-빼고 숫자만 입력" name="phone" class="size" required>
+                        <input  th:value="${member.phone}" name="phone" class="size" required>
                     </label> <!--전화번호-->
 
 
                     <label>
                         <!-- <span>PW</span> -->
                         <p style="text-align: left; font-size:12px; color:#666">E-mail</p>
-                        <input type="text" name="email" placeholder="이메일" class="size">
+                        <input type="text" th:value="${member.email}" name="email" placeholder="이메일" class="size">
                     </label> <!--이메일-->
 
 

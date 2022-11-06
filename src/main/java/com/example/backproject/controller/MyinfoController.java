@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.security.Principal;
 
 @Controller
@@ -19,15 +20,13 @@ import java.security.Principal;
 public class MyinfoController {
 
     @GetMapping("/myinfo")
-    public ModelAndView myinfo() {
-        ModelAndView mav = new ModelAndView("myinfo");
-        return mav;
-    }
+    public ModelAndView myinfo(HttpSession session) {
+        MemberDto memberDto = (MemberDto) session.getAttribute("member");
 
-    @GetMapping("/username")
-    @ResponseBody
-    public String myinfoUsername(Principal principal) {
-        return principal.getName();
+        ModelAndView mav = new ModelAndView("myinfo");
+        mav.addObject("member", memberDto);
+
+        return mav;
     }
 
 
