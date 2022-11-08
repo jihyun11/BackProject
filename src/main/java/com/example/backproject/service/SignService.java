@@ -3,7 +3,9 @@ package com.example.backproject.service;
 import com.example.backproject.dto.MemberDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.lang.reflect.Member;
 import java.sql.Connection;
@@ -53,6 +55,23 @@ public class SignService {
 
 
     }
+
+    public void myinfoUp(MemberDto md) {
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET(username, password, phone, email) values(?, ?, ?, ?)");
+            preparedStatement.setString(1, md.getUsername());
+            preparedStatement.setString(2, md.getPassword());
+            preparedStatement.setString(3, md.getPhone());
+            preparedStatement.setString(4, md.getEmail());
+            preparedStatement.execute();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
 
 }
 

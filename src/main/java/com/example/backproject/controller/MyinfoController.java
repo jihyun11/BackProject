@@ -3,11 +3,9 @@ package com.example.backproject.controller;
 import com.example.backproject.dto.MemberDto;
 import com.example.backproject.service.SignService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +17,9 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class MyinfoController {
 
+    @Autowired
+    private SignService signService;
+
     @GetMapping("/myinfo")
     public ModelAndView myinfo(HttpSession session) {
         MemberDto memberDto = (MemberDto) session.getAttribute("member");
@@ -27,6 +28,13 @@ public class MyinfoController {
         mav.addObject("member", memberDto);
 
         return mav;
+    }
+
+    @PostMapping("/myinfo")
+    public String myinfoUp(@ModelAttribute MemberDto md) {
+        System.out.println(md.toString());
+        signService.myinfoUp(md);
+        return "redirect:/myinfo";
     }
 
 
