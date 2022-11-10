@@ -56,10 +56,10 @@ public class SignService {
 
     }
 
-    public void myinfoUp(MemberDto md) {
+    public void myinfoUpdate(MemberDto md) {
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET(username, password, phone, email) values(?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET(username, password, phone, email) where = @{username}values(?, ?, ?, ?)");
             preparedStatement.setString(1, md.getUsername());
             preparedStatement.setString(2, md.getPassword());
             preparedStatement.setString(3, md.getPhone());
@@ -71,6 +71,7 @@ public class SignService {
 
 
     }
+
 
 
 }

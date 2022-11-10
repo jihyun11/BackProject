@@ -31,9 +31,9 @@ public class MyinfoController {
     }
 
     @PostMapping("/myinfo")
-    public String myinfoUp(@ModelAttribute MemberDto md) {
-        System.out.println(md.toString());
-        signService.myinfoUp(md);
+    public String myinfoUp(HttpSession session) {
+        System.out.println(session.toString());
+        signService.myinfoUpdate((MemberDto) session);
         return "redirect:/myinfo";
     }
 
