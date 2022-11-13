@@ -8,10 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.lang.reflect.Member;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 @Service
 public class SignService {
@@ -53,28 +50,59 @@ public class SignService {
         }
         return memberDto;
 
-
     }
 
-    public void myinfoUpdate(MemberDto md) {
-        try {
-            Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET(username, password, phone, email) where = @{username}values(?, ?, ?, ?)");
-            preparedStatement.setString(1, md.getUsername());
-            preparedStatement.setString(2, md.getPassword());
-            preparedStatement.setString(3, md.getPhone());
-            preparedStatement.setString(4, md.getEmail());
-            preparedStatement.execute();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        public void myinfoUpdate (MemberDto md){
+            try {
+                Connection connection = dataSource.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET password = ?, phone = ?, email = ?, WHERE username = ?");
+                preparedStatement.setString(2, md.getPassword());
+                preparedStatement.setString(3, md.getPhone());
+                preparedStatement.setString(4, md.getEmail());
+                preparedStatement.setString(4, md.getUsername());
+                preparedStatement.execute();
+
+                preparedStatement.close();
+                connection.close();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+
+
         }
 
 
+
+
+
+
+
+    public MemberDto getMember(String username) {
+        MemberDto memberDto = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("select username, password, phone, email from member where username = ?");
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String usernameVal = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String phone = resultSet.getString("phone");
+                String email = resultSet.getString("email");
+                memberDto = new MemberDto(usernameVal, password, phone, email);
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return memberDto;
     }
-
-
-
 }
+
+
 
 
 
