@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.lang.reflect.Member;
 import java.sql.*;
+import java.sql.ResultSet;
 
 @Service
 public class SignService {
@@ -56,10 +57,10 @@ public class SignService {
         public void myinfoUpdate (MemberDto md){
             try {
                 Connection connection = dataSource.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET password = ?, phone = ?, email = ?, WHERE username = ?");
-                preparedStatement.setString(2, md.getPassword());
-                preparedStatement.setString(3, md.getPhone());
-                preparedStatement.setString(4, md.getEmail());
+                PreparedStatement preparedStatement = connection.prepareStatement("UPDATE member SET password = ?, phone = ?, email = ? WHERE username = ?");
+                preparedStatement.setString(1, md.getPassword());
+                preparedStatement.setString(2, md.getPhone());
+                preparedStatement.setString(3, md.getEmail());
                 preparedStatement.setString(4, md.getUsername());
                 preparedStatement.execute();
 
@@ -95,7 +96,7 @@ public class SignService {
             }
 
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return memberDto;
