@@ -4,6 +4,7 @@ import com.example.backproject.dto.LetterDto;
 import com.example.backproject.service.LetterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,12 @@ public class LetterController {
     public ModelAndView sendLetter(@ModelAttribute LetterDto letterDto) {
         ModelAndView modelAndView = new ModelAndView("redirect:/");
         letterService.insertLetter(letterDto);
+        return modelAndView;
+    }
+
+    @GetMapping
+    public ModelAndView letterList() {
+        ModelAndView modelAndView = new ModelAndView("/letterlist");
         return modelAndView;
     }
 }

@@ -1,10 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link type="image/png" sizes="16x16" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-16.png"/>
+    <link type="image/png" sizes="32x32" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-32.png"/>
+    <a target="_blank" href="https://icons8.com/icon/101282/리그-오브-레전드">리그 오브 레전드</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <title>T1 Gumayusi</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {font-family: "Lato", sans-serif}
+        .mySlides {display: none}
+
+
+             /* 게시판 리스트 목록 */
+         .sub_news,.sub_news th,.sub_news td{border:0}
+        .sub_news a{color:#383838;text-decoration:none}
+        .sub_news{width:100%;border-bottom:1px solid #999;color:#666;font-size:12px;table-layout:fixed}
+        .sub_news caption{display:none}
+        .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
+        .sub_news td{padding:8px 0 9px;border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+        .sub_news .date,.sub_news .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+        .sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+        .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+        .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+        .sub_news tr.reply .title a{padding-left:16px;background:url(첨부파일/ic_reply.png) 0 1px no-repeat}
+        /* //게시판 리스트 목록 */
+
+
+
+    </style>
 </head>
 <body>
 
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+        <a href="#profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROFILE</a>
+        <a href="#league" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LEAGUE</a>
+        <a href="#letter" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LETTER</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>
+            <div th:if="${session.member== null}" class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/letterlist}">Letter List</a>
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/signin}" >Sign in</a>
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/signup}">Sign up</a>
+            </div>
+            <div th:if="${session.member!= null}" class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/letterlist}">Letter List</a>
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/myinfo}">내 정보</a>
+                <a href="#" class="w3-bar-item w3-button" th:href="@{/logout}">Logout</a>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+    </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <button href="#profile" class="w3-bar-item w3-button w3-padding-large" onclick="location.href='hello2.html#profile'">PRIFILE</a>
+        <a href="#league" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LEAGUE</a>
+        <a href="#letter" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">LETTER</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+    </button>
+</div>
+
+<!-- 리스트 게시판 시작-->
+
+<form method="post" action="/letterlist">
+<table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+    <caption>게시판 리스트</caption>
+    <colgroup>
+        <col>
+        <col width="110">
+        <col width="100">
+        <col width="80">
+    </colgroup>
+    <thead>
+    <tr>
+        <th scope="col">제목</th>
+        <th scope="col">글쓴이</th>
+        <th scope="col">날짜</th>
+        <th scope="col">조회수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="title">
+            <a href="#">팬레터 목록</a>
+            <img width="13" height="12" class="pic" alt="첨부이미지" src="첨부파일 ic_pic.gif"> <a class="comment" href="#">[5]</a> <img width="10" height="9" class="new" alt="새글" src="첨부파일/ic_new.gif">
+        </td>
+        <td class="name">지현</td>
+        <td class="date">2022/11/23</td>
+        <td class="hit">1234</td>
+    </tr>
+    <tr class="reply">
+        <td class="title" style="padding-left:30px;">
+            <a href="#">블로그 개편 답글</a>
+        </td>
+        <td class="name">벤쿠버지사</td>
+        <td class="date">2008/02/14</td>
+        <td class="hit">1234</td>
+    </tr>
+
+    <!-- tr이 제목 1줄입니다 보일 list 갯수만큼 li반복합니다.-->
+    </tbody>
+</table>
+
+<!-- 리스트 게시판 끝-->
+</form>
 </body>
 </html>
