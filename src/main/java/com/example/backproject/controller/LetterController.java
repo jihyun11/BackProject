@@ -1,6 +1,7 @@
 package com.example.backproject.controller;
 
 import com.example.backproject.dto.LetterDto;
+import com.example.backproject.dto.MemberDto;
 import com.example.backproject.service.LetterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LetterController {
@@ -21,9 +24,10 @@ public class LetterController {
         return modelAndView;
     }
 
-    @GetMapping
-    public ModelAndView letterList() {
-        ModelAndView modelAndView = new ModelAndView("/letterlist");
-        return modelAndView;
+    @GetMapping("/letterlist")
+    public ModelAndView letterlist() {
+        ModelAndView mav = new ModelAndView("letterlist");
+        return mav;
     }
+
 }
