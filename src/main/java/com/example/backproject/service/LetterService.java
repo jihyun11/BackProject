@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class LetterService {
@@ -35,20 +37,26 @@ public class LetterService {
 
     }
 
-    public void receiveLetter(LetterDto letterDto) {
+    public List<LetterDto> getLetterList() {
         try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("select writer, comment from letter");
+            String sql = "select letter_id, writer, comment, create_time from fan_letter order by letter_id desc";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
+            List<LetterDto> list = new ArrayList<>();
             while (resultSet.next()) {
+                String letterId = resultSet.getString("letter_id");
                 String writer = resultSet.getString("writer");
                 String comment = resultSet.getString("comment");
-                letterDto = new LetterDto("writer", "email", "comment");
+                String createTime = resultSet.getString("create_time");
+                LetterDto letter = new LetterDto(letterId, writer, comment, createTime);
+
+                list.add(letter);
             }
+            return list;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-
-
         }
+
     }
 }

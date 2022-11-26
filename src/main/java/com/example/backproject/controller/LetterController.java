@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class LetterController {
@@ -27,16 +28,10 @@ public class LetterController {
     @GetMapping("/letterlist")
     public ModelAndView letterlist() {
         ModelAndView mav = new ModelAndView("letterlist");
+        List<LetterDto> letterList = letterService.getLetterList();
+        mav.addObject("list", letterList);
         return mav;
     }
 
-    @PostMapping("/letter/receive_letter") // 세션의 username 값을 이용하여, 세션에서 모든 정보를 불러오는 것이 아닌 애초부터 db에서 정보를 빼내오도록 수정
-    public ModelAndView receiveLetter(@ModelAttribute LetterDto letterDto) {
-        ModelAndView mav = new ModelAndView("redirect:/letterlist");
-        letterService.receiveLetter(letterDto);
-        return mav;
-
-
-    }
 
 }
