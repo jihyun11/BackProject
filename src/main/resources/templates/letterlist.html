@@ -3,6 +3,11 @@
 <head>
     <link type="image/png" sizes="16x16" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-16.png"/>
     <link type="image/png" sizes="32x32" rel="icon" href="../static/img/icons8-리그-오브-레전드-ios-glyph-32.png"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&effect=shadow-multiple">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Allerta+Stencil'>
     <a target="_blank" href="https://icons8.com/icon/101282/리그-오브-레전드">리그 오브 레전드</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
     <title>T1 Gumayusi</title>
@@ -15,9 +20,33 @@
     <style>
         body {font-family: "Lato", sans-serif}
         .mySlides {display: none}
+
+        #video {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.9;
+        }
+
+        .w3-lobster {
+            font-family: "Lobster", Sans-serif;
+        }
+
+
+
     </style>
 </head>
 <body>
+
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+    <source th:src="@{video/video.mp4}">
+</video>
 
 <!-- Navbar -->
 <div class="w3-top">
@@ -62,16 +91,16 @@
             <li>게시판 Title </li>
 
             <!-- 게시판 목록  -->
-            <li><span class="w3-text-pink">⋆⁺₊⋆☾⋆⁺₊⋆♡⋆⁺₊⋆☾⋆⁺₊⋆</span>Letter List<span class="w3-text-pink">⋆⁺₊⋆☾⋆⁺₊⋆♡⋆⁺₊⋆☾⋆⁺₊⋆</span></li>
+            <li><h1 class="w3-cursive font-effect-fire ">Letter List</h1></li>
 
-            <table class="w3-table w3-bordered">
+            <table class="w3-table-all" style="opacity: 0.6">
                 <colgroup>
                     <col style="width:10%"/>
                     <col style="width:60%"/>
                     <col style="width:20%"/>
                     <col style="width:10%"/>
                 </colgroup>
-                <tr class="w3-grey">
+                <tr class="w3-blue-grey">
                     <th>No</th>
                     <th>내용</th>
                     <th>작성일</th>
