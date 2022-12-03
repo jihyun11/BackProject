@@ -29,6 +29,8 @@ public class LetterService {
             preparedStatement.setString(3, letterDto.getComment());
             preparedStatement.execute();
 
+            connection.close();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -53,6 +55,7 @@ public class LetterService {
 
                 list.add(letter);
             }
+            connection.close();
             return list;
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -24,6 +24,9 @@ public class SignService {
             preparedStatement.setString(3, md.getPhone());
             preparedStatement.setString(4, md.getEmail());
             preparedStatement.execute();
+
+            connection.close();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -46,6 +49,8 @@ public class SignService {
                 memberDto = new MemberDto(username, password, phone, email);
 
             }
+            connection.close();
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -94,6 +99,8 @@ public class SignService {
                 String email = resultSet.getString("email");
                 memberDto = new MemberDto(usernameVal, password, phone, email);
             }
+
+            connection.close();
 
 
         } catch (Exception e) {
